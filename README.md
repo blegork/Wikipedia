@@ -1,6 +1,10 @@
-# # Wikipedia 
+# WikiScan 
 
-Tool per analisi delle categorie e pagine wikipedia
+WikiScan è uno strumento esterno a wikipedia che data una categoria specifica, ricerca le sue sottocategorie e pagine.
+Può anche essere utilizzato per trovare tutte le pagine che appartengono a due o piu' categorie specifiche (intersezione).
+
+Outuput(opzionale): salva il grafo in un file .gexf
+
 
 (Tested on Ubuntu 19.10)
 
