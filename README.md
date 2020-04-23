@@ -1,7 +1,8 @@
 # WikiScan 
 
-WikiScan è uno strumento esterno a wikipedia che data una categoria specifica, ricerca le sue sottocategorie e pagine.
+WikiScan è uno strumento esterno a wikipedia che data una specifica categoria, ricerca le sue sottocategorie e pagine.
 Può anche essere utilizzato per trovare tutte le pagine che appartengono a due o piu' categorie specifiche (intersezione).
+Opzionalmente genera in output un file .gexf, che contiene il grafo/i che hai espolorato.
 
 Outuput(opzionale): salva il grafo in un file .gexf
 
@@ -80,15 +81,23 @@ I - Istruzioni di installazione
 
  4. Colorazione nodi:
  
-    a. Grafo singolo:
+ 	a. Grafo singolo:
 		  Colora in modo diverso: Categoria padre, sotto-categorie, pagine
  		  Nodes -> Color -> Partion -> type -> Apply
-      
-	  b. Intersezione grafi:
+		  
+      ![](https://github.com/blegork/Wikipedia/blob/master/screen/SingleNodeColor.png)
+     	
+	b. Intersezione grafi:
 		  Colora in modo diverso: ogni grafo, categorie e/o pagine in comune
 		  Nodes -> Color -> Partion-> name -> Apply
+		  
+	![](https://github.com/blegork/Wikipedia/blob/master/screen/MultiNodeColor.png)
+		  
+	 
  5. Dimensione nodi:
 		Nodes -> Size -> Ranking -> size -> Apply
+		
+	![](https://github.com/blegork/Wikipedia/blob/master/screen/NodeSize.png)
 
  6. Esportazione grafo:
 	File -> Export -> Sigma.js template
@@ -98,4 +107,8 @@ I - Istruzioni di installazione
 	python3 -m http.server
 	```
  8. Apri il browser e vai all'indirizzo localhost:8000. Questo visulizzera' il grafo
+ 
+ 	![](https://github.com/blegork/Wikipedia/blob/master/screen/Category:Agriculture%7CAfrica.png)
+ 
+ 	Esempio: intersezione Category:Africa e Category:Agriculture, in verde le pagine in comune(Profondita' 1).
 
