@@ -82,25 +82,32 @@ I - Istruzioni di installazione
  4. Colorazione nodi:
  
  	a. Grafo singolo:
-		  Colora in modo diverso: Categoria padre, sotto-categorie, pagine
- 		  Nodes -> Color -> Partion -> type -> Apply
+	
+	Colora in modo diverso: Categoria padre, sotto-categorie, pagine
+	
+	Nodes -> Color -> Partion -> type -> Apply
 		  
       ![](https://github.com/blegork/Wikipedia/blob/master/screen/SingleNodeColor.png)
      	
 	b. Intersezione grafi:
-		  Colora in modo diverso: ogni grafo, categorie e/o pagine in comune
-		  Nodes -> Color -> Partion-> name -> Apply
+	
+	Colora in modo diverso: ogni grafo, categorie e/o pagine in comune
+	
+	Nodes -> Color -> Partion-> name -> Apply
 		  
 	![](https://github.com/blegork/Wikipedia/blob/master/screen/MultiNodeColor.png)
 		  
 	 
  5. Dimensione nodi:
-		Nodes -> Size -> Ranking -> size -> Apply
+ 
+	Nodes -> Size -> Ranking -> size -> Apply
 		
 	![](https://github.com/blegork/Wikipedia/blob/master/screen/NodeSize.png)
 
  6. Esportazione grafo:
+ 
 	File -> Export -> Sigma.js template
+	
 	Questa operazione crea la cartella network
 
  7. Posizionati sulla cartella network e dal terminale apri un web server:
