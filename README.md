@@ -4,8 +4,6 @@ WikiScan è uno strumento esterno a wikipedia che data una specifica categoria, 
 Può anche essere utilizzato per trovare tutte le pagine che appartengono a due o piu' categorie specifiche (intersezione).
 Opzionalmente genera in output un file .gexf, che contiene il grafo/i che hai espolorato.
 
-Outuput(opzionale): salva il grafo in un file .gexf
-
 
 (Tested on Ubuntu 19.10)
 
