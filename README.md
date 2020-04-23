@@ -101,8 +101,9 @@ I - Istruzioni di installazione
 
  6. Esportazione grafo:
 	File -> Export -> Sigma.js template
+	Questa operazione crea la cartella network
 
- 7. Posizionati sulla cartella Gephi e dal terminale apri un web server:
+ 7. Posizionati sulla cartella network e dal terminale apri un web server:
 	```bash
 	python3 -m http.server
 	```
