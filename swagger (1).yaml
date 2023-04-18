@@ -1,0 +1,1017 @@
+swagger: '2.0'
+info:
+  description: Api and Models
+  version: 1.0.0 (@env.GIT_COMMIT@)
+  title: core-sct-revocaelista-v1
+host: localhost:8082
+basePath: /
+tags:
+  - name: bear-dispo-info-rest-controller
+    description: Bear Dispo Info Rest Controller
+  - name: bear-health-controller-endpoint
+    description: Bear Health Controller Endpoint
+  - name: revoca-e-lista-controller
+    description: Revoca E Lista Controller
+paths:
+  /actuator/isp/healthy:
+    get:
+      tags:
+        - bear-health-controller-endpoint
+      summary: healthly
+      operationId: healthlyUsingGET_1
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BearHealthResource'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /actuator/isp/shutdown/{time}:
+    get:
+      tags:
+        - bear-health-controller-endpoint
+      summary: shutdown
+      operationId: shutdownUsingGET_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: time
+          in: path
+          description: time
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BearHealthResource'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /actuator/isp/unhealthy:
+    get:
+      tags:
+        - bear-health-controller-endpoint
+      summary: unhealthly
+      operationId: unhealthlyUsingGET_1
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BearHealthResource'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /annulloBonifico:
+    post:
+      tags:
+        - revoca-e-lista-controller
+      summary: annulloBonificoSimulation
+      operationId: annulloBonificoSimulationUsingPOST_1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/AnnulloBonificoSimulationDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/AnnulloBonificoSimulationResource'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /annulloBonifico/{idOp}:
+    patch:
+      tags:
+        - revoca-e-lista-controller
+      summary: annulloBonificoExecution
+      operationId: annulloBonificoExecutionUsingPATCH_1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: idOp
+          in: path
+          description: idOp
+          required: true
+          type: string
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/AnnulloBonificoExecutionDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/AnnulloBonificoExecutionResource'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /calendarioBonifici:
+    post:
+      tags:
+        - revoca-e-lista-controller
+      summary: calendarioBonifici
+      operationId: calendarioBonificiUsingPOST_1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/CalendarioBonificiDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CalendarioBonificiResource'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /convalidaWQ:
+    post:
+      tags:
+        - revoca-e-lista-controller
+      summary: convalidaWQ
+      operationId: convalidaWQUsingPOST_1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/ConvalidaWQDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ConvalidaWQResource'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /getDispoInfoRevocaeLista/{idOp}:
+    get:
+      tags:
+        - bear-dispo-info-rest-controller
+      summary: getDispoInfo
+      operationId: getDispoInfoUsingGET_1
+      produces:
+        - application/hal+json
+        - application/json
+      parameters:
+        - name: idOp
+          in: path
+          description: idOp
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/DispoInfoResource'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /listaBonificiRevocabili:
+    post:
+      tags:
+        - revoca-e-lista-controller
+      summary: listaBonificiRevocabili
+      operationId: listaBonificiRevocabiliUsingPOST_1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/ListaBonificiRevocabiliDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ListaBonificiRevocabiliResource'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /listaBonificiRevocati:
+    post:
+      tags:
+        - revoca-e-lista-controller
+      summary: listaBonificiRevocati
+      operationId: listaBonificiRevocatiUsingPOST_1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/ListaBonificiRevocatiDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ListaBonificiRevocatiResource'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  AnnulloBonificoExecutionDTO:
+    type: object
+    properties:
+      areaComune:
+        $ref: '#/definitions/BaseOperationDataDTO'
+    title: AnnulloBonificoExecutionDTO
+  AnnulloBonificoExecutionResource:
+    type: object
+    properties:
+      dataInserimentoBonifico:
+        type: integer
+        format: int64
+      exitCode:
+        type: string
+      exitMessage:
+        type: string
+      id:
+        type: string
+      importoBonifico:
+        type: number
+      importoCommissioni:
+        type: number
+      links:
+        $ref: '#/definitions/Links'
+      returnMessages:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorMessage'
+    title: AnnulloBonificoExecutionResource
+  AnnulloBonificoSimulationDTO:
+    type: object
+    properties:
+      areaComune:
+        $ref: '#/definitions/BaseOperationDataDTO'
+      chiaveMaster:
+        type: string
+      iban:
+        type: string
+    title: AnnulloBonificoSimulationDTO
+  AnnulloBonificoSimulationResource:
+    type: object
+    properties:
+      exitCode:
+        type: string
+      exitMessage:
+        type: string
+      id:
+        type: string
+      idOp:
+        type: string
+      links:
+        $ref: '#/definitions/Links'
+      returnMessages:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorMessage'
+    title: AnnulloBonificoSimulationResource
+  BaseOperationDataDTO:
+    type: object
+    properties:
+      codOperativita:
+        type: string
+      codRichCanale:
+        type: string
+      codSocieta:
+        type: string
+      codTipoCanale:
+        type: string
+      codUoRich:
+        type: string
+      codUserid:
+        type: string
+      customer:
+        $ref: '#/definitions/CustomerDTO'
+      dataInserimento:
+        type: integer
+        format: int64
+      technicalInfo:
+        $ref: '#/definitions/TechnicalInfoDTO'
+    title: BaseOperationDataDTO
+  BearHealthResource:
+    type: object
+    properties:
+      result:
+        type: string
+    title: BearHealthResource
+  BonificoResource:
+    type: object
+    properties:
+      anagraficaBeneficiario:
+        type: string
+      anagraficaBeneficiarioEffettivo:
+        type: string
+      anagraficaOrdinanteEffettivo:
+        type: string
+      bancaBeneficiario:
+        type: string
+      bicBeneficiario:
+        type: string
+      canale:
+        type: string
+      categoryPurpose:
+        type: string
+      chiaveMaster:
+        type: string
+      dataEsecuzionePagamento:
+        type: integer
+        format: int64
+      dataRegolamento:
+        type: integer
+        format: int64
+      dataRevoca:
+        type: integer
+        format: int64
+      flFiscale:
+        type: string
+      ibanBeneficiario:
+        type: string
+      importoCommissioni:
+        type: number
+      importoDisposizione:
+        type: number
+      indirizzoBancaBeneficiario:
+        type: string
+      instrId:
+        type: string
+      leggeFiscale:
+        type: string
+      listaCfFruitori:
+        type: array
+        items:
+          type: string
+      pIvaCf:
+        type: string
+      remittanceInformation:
+        type: string
+      statoLavorazione:
+        type: string
+      transactionId:
+        type: string
+    title: BonificoResource
+  BonificoResourceRevocabili:
+    type: object
+    properties:
+      anagraficaBeneficiario:
+        type: string
+      anagraficaBeneficiarioEffettivo:
+        type: string
+      anagraficaOrdinanteEffettivo:
+        type: string
+      bancaBeneficiario:
+        type: string
+      bicBeneficiario:
+        type: string
+      canale:
+        type: string
+      categoryPurpose:
+        type: string
+      chiaveMaster:
+        type: string
+      cognDenomEstero:
+        type: string
+      dataEsecuzionePagamento:
+        type: integer
+        format: int64
+      dataRegolamento:
+        type: integer
+        format: int64
+      dataRevoca:
+        type: integer
+        format: int64
+      flFiscale:
+        type: string
+      ibanBeneficiario:
+        type: string
+      importoCommissioni:
+        type: number
+      importoDisposizione:
+        type: number
+      indirizzoBancaBeneficiario:
+        type: string
+      instrId:
+        type: string
+      leggeFiscale:
+        type: string
+      listaCfFruitori:
+        type: array
+        items:
+          type: string
+      nomeBenEstero:
+        type: string
+      pIvaCf:
+        type: string
+      pIvaCfAmmOrdinante:
+        type: string
+      pIvaCfCondOrdinante:
+        type: string
+      remittanceInformation:
+        type: string
+      statoLavorazione:
+        type: string
+      tipoBenEstero:
+        type: string
+      tipologiaSpese:
+        type: string
+      transactionId:
+        type: string
+    title: BonificoResourceRevocabili
+  CalendarioBonificiDTO:
+    type: object
+    properties:
+      areaComune:
+        $ref: '#/definitions/BaseOperationDataDTO'
+      ibanBeneficiario:
+        type: string
+    title: CalendarioBonificiDTO
+  CalendarioBonificiInput:
+    type: object
+    properties:
+      areaComune:
+        $ref: '#/definitions/OperationDataInput'
+      ibanBeneficiario:
+        type: string
+    title: CalendarioBonificiInput
+  CalendarioBonificiResource:
+    type: object
+    properties:
+      dataFine:
+        type: integer
+        format: int64
+      dataInizio:
+        type: integer
+        format: int64
+      exitCode:
+        type: string
+      exitMessage:
+        type: string
+      id:
+        type: string
+      input:
+        $ref: '#/definitions/CalendarioBonificiInput'
+      links:
+        $ref: '#/definitions/Links'
+      listaGiorniDaEscludere:
+        type: array
+        items:
+          type: integer
+          format: int64
+      returnMessages:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorMessage'
+      weekEnd:
+        type: string
+    title: CalendarioBonificiResource
+  ConvalidaWQDTO:
+    type: object
+    properties:
+      areaComune:
+        $ref: '#/definitions/OperationDataWQDTO'
+      chiaveOperazione:
+        type: string
+      esito:
+        type: string
+    title: ConvalidaWQDTO
+  ConvalidaWQResource:
+    type: object
+    properties:
+      exitCode:
+        type: string
+      exitMessage:
+        type: string
+      id:
+        type: string
+      links:
+        $ref: '#/definitions/Links'
+      returnMessages:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorMessage'
+    title: ConvalidaWQResource
+  CustomerDTO:
+    type: object
+    properties:
+      abi:
+        type: string
+      identifier:
+        type: string
+      identifierType:
+        type: string
+      tipoCli:
+        type: string
+    title: CustomerDTO
+  CustomerInput:
+    type: object
+    properties:
+      abi:
+        type: string
+      identifier:
+        type: string
+      identifierType:
+        type: string
+      tipoCli:
+        type: string
+    title: CustomerInput
+  DatiOrdinanteResource:
+    type: object
+    properties:
+      lista:
+        type: array
+        items:
+          $ref: '#/definitions/BonificoResource'
+      ordinante:
+        $ref: '#/definitions/OrdinanteResource'
+    title: DatiOrdinanteResource
+  DatiOrdinanteRevocabiliResource:
+    type: object
+    properties:
+      lista:
+        type: array
+        items:
+          $ref: '#/definitions/BonificoResourceRevocabili'
+      ordinante:
+        $ref: '#/definitions/OrdinanteResource'
+    title: DatiOrdinanteRevocabiliResource
+  DispoInfoResource:
+    type: object
+    properties:
+      dispoInfo:
+        type: object
+        additionalProperties:
+          type: string
+      id:
+        type: string
+      links:
+        $ref: '#/definitions/Links'
+      returnMessages:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorMessage'
+    title: DispoInfoResource
+  ErrorMessage:
+    type: object
+    properties:
+      errorCode:
+        type: string
+      extensions:
+        type: object
+        additionalProperties:
+          type: string
+      language:
+        type: string
+      message:
+        type: string
+      messageKey:
+        type: string
+      messageTitle:
+        type: string
+      messagesForm:
+        type: array
+        items:
+          $ref: '#/definitions/MessageForm'
+      retry:
+        type: boolean
+      severity:
+        type: string
+    title: ErrorMessage
+  ErrorResourceReq:
+    type: object
+    properties:
+      links:
+        type: array
+        items:
+          $ref: '#/definitions/Link'
+      returnMessages:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorMessage'
+    title: ErrorResourceReq
+  ErrorResourceRes:
+    type: object
+    properties:
+      links:
+        $ref: '#/definitions/Links'
+      returnMessages:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorMessage'
+    title: ErrorResourceRes
+  InputBonificiExtResource:
+    type: object
+    properties:
+      canale:
+        type: array
+        items:
+          type: string
+      dataFineRicerca:
+        type: integer
+        format: int64
+      dataInizioRicerca:
+        type: integer
+        format: int64
+      flFiscale:
+        type: string
+      importoA:
+        type: number
+      importoDa:
+        type: number
+      listaCodiceBonifico:
+        type: array
+        items:
+          type: string
+      listaIbanOrdinante:
+        type: array
+        items:
+          type: string
+      statoLavorazione:
+        type: array
+        items:
+          type: string
+    title: InputBonificiExtResource
+  InputBonificiResource:
+    type: object
+    properties:
+      canale:
+        type: array
+        items:
+          type: string
+      dataFineRicerca:
+        type: integer
+        format: int64
+      dataInizioRicerca:
+        type: integer
+        format: int64
+      flFiscale:
+        type: string
+      importoA:
+        type: number
+      importoDa:
+        type: number
+      listaCodiceBonifico:
+        type: array
+        items:
+          type: string
+      listaIbanOrdinante:
+        type: array
+        items:
+          type: string
+    title: InputBonificiResource
+  Link:
+    type: object
+    properties:
+      deprecation:
+        type: string
+      href:
+        type: string
+      hreflang:
+        type: string
+      media:
+        type: string
+      name:
+        type: string
+      profile:
+        type: string
+      rel:
+        $ref: '#/definitions/LinkRelation'
+      title:
+        type: string
+      type:
+        type: string
+    title: Link
+  LinkRelation:
+    type: object
+    title: LinkRelation
+  Links:
+    type: object
+    properties:
+      links:
+        type: array
+        items:
+          $ref: '#/definitions/Link'
+    title: Links
+  ListaBonificiRevocabiliDTO:
+    type: object
+    properties:
+      areaComune:
+        $ref: '#/definitions/BaseOperationDataDTO'
+      canale:
+        type: array
+        items:
+          type: string
+      dataFineRicerca:
+        type: integer
+        format: int64
+      dataInizioRicerca:
+        type: integer
+        format: int64
+      flFiscale:
+        type: string
+      importoA:
+        type: number
+      importoDa:
+        type: number
+      listaCodiceBonifico:
+        type: array
+        items:
+          type: string
+      listaIbanOrdinante:
+        type: array
+        items:
+          type: string
+    title: ListaBonificiRevocabiliDTO
+  ListaBonificiRevocabiliResource:
+    type: object
+    properties:
+      exitCode:
+        type: string
+      exitMessage:
+        type: string
+      id:
+        type: string
+      input:
+        $ref: '#/definitions/InputBonificiResource'
+      links:
+        $ref: '#/definitions/Links'
+      listaOutput:
+        type: array
+        items:
+          $ref: '#/definitions/DatiOrdinanteRevocabiliResource'
+      returnMessages:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorMessage'
+    title: ListaBonificiRevocabiliResource
+  ListaBonificiRevocatiDTO:
+    type: object
+    properties:
+      areaComune:
+        $ref: '#/definitions/BaseOperationDataDTO'
+      canale:
+        type: array
+        items:
+          type: string
+      dataFineRicerca:
+        type: integer
+        format: int64
+      dataInizioRicerca:
+        type: integer
+        format: int64
+      flFiscale:
+        type: string
+      importoA:
+        type: number
+      importoDa:
+        type: number
+      listaCodiceBonifico:
+        type: array
+        items:
+          type: string
+      listaIbanOrdinante:
+        type: array
+        items:
+          type: string
+      statoLavorazione:
+        type: array
+        items:
+          type: string
+    title: ListaBonificiRevocatiDTO
+  ListaBonificiRevocatiResource:
+    type: object
+    properties:
+      exitCode:
+        type: string
+      exitMessage:
+        type: string
+      id:
+        type: string
+      input:
+        $ref: '#/definitions/InputBonificiExtResource'
+      links:
+        $ref: '#/definitions/Links'
+      listaOutput:
+        type: array
+        items:
+          $ref: '#/definitions/DatiOrdinanteResource'
+      returnMessages:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorMessage'
+    title: ListaBonificiRevocatiResource
+  MessageForm:
+    type: object
+    properties:
+      fieldName:
+        type: string
+      formName:
+        type: string
+    title: MessageForm
+  OperationDataInput:
+    type: object
+    properties:
+      codOperativita:
+        type: string
+      codRichCanale:
+        type: string
+      codSocieta:
+        type: string
+      codTipoCanale:
+        type: string
+      codUoRich:
+        type: string
+      codUserid:
+        type: string
+      customer:
+        $ref: '#/definitions/CustomerInput'
+      dataInserimento:
+        type: integer
+        format: int64
+      technicalInfo:
+        $ref: '#/definitions/TechnicalInfoInput'
+    title: OperationDataInput
+  OperationDataWQDTO:
+    type: object
+    properties:
+      codOperativita:
+        type: string
+      codRichCanale:
+        type: string
+      codSocieta:
+        type: string
+      codTipoCanale:
+        type: string
+      codUoRich:
+        type: string
+      codUserid:
+        type: string
+      customer:
+        $ref: '#/definitions/CustomerDTO'
+      dataInserimento:
+        type: string
+      technicalInfo:
+        $ref: '#/definitions/TechnicalInfoDTO'
+    title: OperationDataWQDTO
+  OrdinanteResource:
+    type: object
+    properties:
+      ibanOrdinante:
+        type: string
+      nominativoOrdinante:
+        type: string
+    title: OrdinanteResource
+  TechnicalInfoDTO:
+    type: object
+    properties:
+      applicationID:
+        type: string
+      codSocietaChiamante:
+        type: string
+      codSocietaService:
+        type: string
+      pgmChiamante:
+        type: string
+    title: TechnicalInfoDTO
+  TechnicalInfoInput:
+    type: object
+    properties:
+      applicationID:
+        type: string
+      codSocietaChiamante:
+        type: string
+      codSocietaService:
+        type: string
+      pgmChiamante:
+        type: string
+    title: TechnicalInfoInput
+  TemplateVariable:
+    type: object
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+        enum:
+          - COMPOSITE_PARAM
+          - FRAGMENT
+          - PATH_VARIABLE
+          - REQUEST_PARAM
+          - REQUEST_PARAM_CONTINUED
+          - SEGMENT
+    title: TemplateVariable
+  TemplateVariables:
+    type: object
+    properties:
+      variables:
+        type: array
+        items:
+          $ref: '#/definitions/TemplateVariable'
+    title: TemplateVariables
+  UriTemplate:
+    type: object
+    properties:
+      baseUri:
+        type: string
+      toString:
+        type: string
+      variables:
+        $ref: '#/definitions/TemplateVariables'
+    title: UriTemplate
